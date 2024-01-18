@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/style.css') }}"
+    />
+    <title>Edit Difference Checker</title>
+  </head>
+  <body>
+    <h1>Edit Difference Checker</h1>
+
+    <label for="sentence1">Enter Sentence 1:</label>
+    <textarea id="sentence1" rows="4" cols="50"></textarea>
+
+    <label for="sentence2">Enter Sentence 2:</label>
+    <textarea id="sentence2" rows="4" cols="50"></textarea>
+
+    <button onclick="edit_difference()">Check Difference</button>
+
+    <div id="result"></div>
+
+    <script>
+      function edit_difference() {
+        const sentence1 = document.getElementById("sentence1").value;
+        const sentence2 = document.getElementById("sentence2").value;
+
+        fetch("/check_difference", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ sentence1, sentence2 }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById(
+              "result"
+            ).innerText = `Edit Difference: ${data.difference}`;
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>
