@@ -21,25 +21,6 @@ def check_difference():
 
 
 def edit_distance(sentence1, sentence2):
-    # differ = difflib.Differ()
-    # diff = list(differ.compare(sentence1.split(), sentence2.split()))
-
-    # marked_sentence1 = []
-    # marked_sentence2 = []
-
-    # for item in diff:
-    #     prefix = item[:2]
-    #     word = item[2:]
-    #     if prefix == "  ":
-    #         marked_sentence1.append(word)
-    #         marked_sentence2.append(word)
-    #     elif prefix == "- ":
-    #         marked_sentence1.append(f"<mark>{word}</mark>")
-    #     elif prefix == "+ ":
-    #         marked_sentence2.append(f"<mark>{word}</mark>")
-
-    # return " ".join(marked_sentence1), " ".join(marked_sentence2)
-
     matcher = difflib.SequenceMatcher(None, sentence1.split(), sentence2.split())
 
     marked_sentence1 = []
