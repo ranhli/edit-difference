@@ -1,3 +1,13 @@
+#remove {
+  background-color: white;
+  color: red;
+}
+
+#add {
+  background-color: white;
+  color: orange;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
